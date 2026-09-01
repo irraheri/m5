@@ -1,18 +1,6 @@
-#include <stdio.h>
+#include "common.h"
 
-#include <unistd.h>
-
-#include <sys/socket.h>
-#include <netinet/in.h>
-
-#include <arpa/inet.h> // currently not used
-
-#include <string.h>
-
-#include "tools.h"
-
-#define PORT 8080
-#define BUFFER_SIZE 1024
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 
 void *wait_for_server(void *arg)
