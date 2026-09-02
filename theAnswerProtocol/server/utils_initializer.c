@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_initializer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:18 by irraheri          #+#    #+#             */
-/*   Updated: 2026/08/25 17:00:17 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/02 09:37:09 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,10 @@ void	add_player(int client_fd, t_client_manager *manager)
 		{
 			manager->players[i].fd = client_fd;
 			manager->players[i].status = 1;
-			printf("%d\n%d\n%d\n", i, i, i);
 			return ;
 		}
 		i++;
 	}
 	log_date();
-	printf("EXCEDED MAX_PLAYER\n");
+	printf("EXCEDED MAX_PLAYER (%d)\n", MAX_PLAYER);
 }

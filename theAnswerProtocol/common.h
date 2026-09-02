@@ -1,12 +1,12 @@
-#include <arpa/inet.h>  // 'inter'-net
-#include <netdb.h>      // ipaddr
-#include <netinet/in.h> // sockaddr_in AF_INET SOCK_STREAM INADDR_ANY htons
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <netinet/in.h>
 #include <pthread.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/socket.h> // socket, bind, listen, accept, recv, send, close
+#include <sys/socket.h>
 #include <time.h>
 #include <unistd.h>
 
