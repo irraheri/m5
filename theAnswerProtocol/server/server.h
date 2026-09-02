@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:20 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/02 09:05:11 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/02 10:54:39 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct making_player_list
 {
 	t_player			players[MAX_PLAYER];
 	int					number_of_player;
+	pthread_mutex_t		mutex;
 }						t_client_manager;
 
 typedef struct signal_from_backend
@@ -44,3 +45,4 @@ void					initialize_client_manager(t_client_manager *manager);
 void					add_player(int client_fd, t_client_manager *manager);
 t_signal				cohesion(int client_fd, char *buf);
 int						player_id(int client_fd, t_client_manager gmanager);
+void					remove_player(int client_fd, t_client_manager *manager);

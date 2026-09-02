@@ -6,13 +6,12 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:16 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/02 09:39:32 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/02 10:54:42 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-pthread_mutex_t		g_mutex = PTHREAD_MUTEX_INITIALIZER;
 t_property			g_server;
 t_client_manager	g_manager;
 
@@ -47,7 +46,12 @@ void	*client_host(void *arg)
 	{
 		memset(buf, 0, sizeof(buf));
 		if (recv(client_id, buf, 1024, 0) <= 0)
+		{
+			log_date();
+			printf("Player %d DISCONNECTED\n", player_id(client_id, g_manager));
+			remove_player(client_id, &g_manager);
 			break ;
+		}
 		log_date();
 		buf[strlen(buf) - 1] = '\0';
 		printf("RECEIVED '%s' FROM PLAYER %d\n", buf, player_id(client_id,
@@ -72,11 +76,13 @@ void	server_routine(void)
 			&addr_len);
 	if (client_fd < 0)
 		return ;
+	pthread_mutex_lock(&(g_manager.mutex));
 	add_player(client_fd, &g_manager);
 	g_manager.number_of_player += 1;
+	pthread_mutex_unlock(&(g_manager.mutex));
 	inet_ntop(AF_INET, &client_addr.sin_addr, client_ip, sizeof(client_ip));
 	log_date();
-	printf("Player %d is CONNECTED (%s)\n", g_manager.number_of_player,
+	printf("Player %d is CONNECTED (%s)\n", player_id(client_fd, g_manager),
 		client_ip);
 	pthread_create(&client_mess_rec, NULL, client_host,
 		(void *)(long)client_fd);

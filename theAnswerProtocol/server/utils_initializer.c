@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:18 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/02 09:37:09 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/02 10:55:44 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	log_date(void)
 
 void	initialize_client_manager(t_client_manager *manager)
 {
-	int	i;
-
+	int				i;
+	pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
 	i = 0;
 	while (i < MAX_PLAYER)
 	{
@@ -55,6 +55,7 @@ void	initialize_client_manager(t_client_manager *manager)
 		i++;
 	}
 	manager->number_of_player = 0;
+	manager->mutex = g_mutex;
 }
 
 void	add_player(int client_fd, t_client_manager *manager)
@@ -74,4 +75,24 @@ void	add_player(int client_fd, t_client_manager *manager)
 	}
 	log_date();
 	printf("EXCEDED MAX_PLAYER (%d)\n", MAX_PLAYER);
+}
+
+void	remove_player(int client_fd, t_client_manager *manager)
+{
+	int	i;
+
+	i = 0;
+	while (i < MAX_PLAYER)
+	{
+		if (manager->players[i].fd == client_fd)
+		{
+			manager->players[i].fd = -1;
+			manager->players[i].status = 0;
+			pthread_mutex_lock(&(manager->mutex));
+			manager->number_of_player -= 1;
+			pthread_mutex_unlock(&(manager->mutex));
+			return ;
+		}
+		i++;
+	}
 }
