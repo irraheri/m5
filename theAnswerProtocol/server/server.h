@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:20 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/02 10:54:39 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/02 11:10:10 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ typedef struct signal_from_backend
 	int					number_of_them;
 	char				message[BUFFER_SIZE];
 }						t_signal;
+
+typedef struct command_struct
+{
+	int					is_valid;
+	char				type[32];
+	char				message[128];
+}						t_command;
 
 void					log_date(void);
 void					print_ip_addr(void);
