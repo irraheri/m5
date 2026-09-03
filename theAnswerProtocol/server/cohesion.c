@@ -1,8 +1,9 @@
 #include "cohesion.h"
-#include "server.h"
 
 void	multi_word_parsing(char *buf, t_command *result)
 {
+	if (!strcmp(result->type, "ERROR"))
+		return ;
 	strcpy(result->message, buf);
 }
 
@@ -38,7 +39,7 @@ void	first_word_parsing(char *buf, t_command *result)
 void	one_word_parsing(char *buf, t_command *result)
 {
 	result->is_valid = 1;
-	strcpy(result->message, "one column message");
+	strcpy(result->message, "one column message\n");
 	if (!strcmp(buf, "LOOK"))
 		strcpy(result->type, "LOOK");
 	else if (!strcmp(buf, "QUIT"))
@@ -90,12 +91,15 @@ t_signal	cohesion(int client_fd, char *buf)
 	}
 	else
 	{
-		// on utilise test, buf est corrompu
-		sign.number_of_them = 1;
-		sign.all_fd[0] = client_fd;
-		strcpy(sign.message, "OKOKOK...result:");
-		strcat(sign.message, test.message);
-		strcat(sign.message, "\n");
-		return (sign);
+		test = second_process(test);
+		if (test.is_valid == 0)
+		{
+			sign.number_of_them = 1;
+			sign.all_fd[0] = client_fd;
+			strcpy(sign.message, test.message);
+			return (sign);
+		}
+		else
+			return (third_process(test, client_fd));
 	}
 }

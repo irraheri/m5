@@ -46,6 +46,6 @@ void	not_first_term(char *str)
 			j++;
 			i++;
 		}
-        str[j] = '\0';
+		str[j] = '\0';
 	}
 }

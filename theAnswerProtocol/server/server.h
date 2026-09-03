@@ -6,11 +6,13 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:20 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/02 11:10:10 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/03 11:00:14 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../common.h"
+#ifndef SERVER_H
+# define SERVER_H
+# include "../common.h"
 
 typedef struct server_fd_plus_address
 {
@@ -53,3 +55,5 @@ void					add_player(int client_fd, t_client_manager *manager);
 t_signal				cohesion(int client_fd, char *buf);
 int						player_id(int client_fd, t_client_manager gmanager);
 void					remove_player(int client_fd, t_client_manager *manager);
+
+#endif
