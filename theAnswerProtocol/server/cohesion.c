@@ -13,7 +13,7 @@ void	first_word_parsing(char *buf, t_command *result)
 	if (!strcmp(buf, "CONNECT") || !strcmp(buf, "MOVE") || !strcmp(buf, "TAKE")
 		|| !strcmp(buf, "DROP") || !strcmp(buf, "TALK") || !strcmp(buf,
 			"ATTACK") || !strcmp(buf, "QUEST") || !strcmp(buf, "CHAT")
-		|| !strcmp(buf, "GROUP"))
+		|| !strcmp(buf, "GROUP") || !strcmp(buf, "ABANDON_QUEST"))
 		strcpy(result->type, buf);
 	else
 	{

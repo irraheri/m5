@@ -6,11 +6,13 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:18 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/02 10:55:44 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/04 16:15:52 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
+
+pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void	print_ip_addr(void)
 {
@@ -46,53 +48,21 @@ void	log_date(void)
 void	initialize_client_manager(t_client_manager *manager)
 {
 	int				i;
-	pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
+
 	i = 0;
 	while (i < MAX_PLAYER)
 	{
 		manager->players[i].fd = -1;
 		manager->players[i].status = 0;
+		strcpy(manager->players[i].name, "none");
+		manager->players[i].items.len = 0;
+		manager->players[i].quests.len = 0;
+		manager->players[i].hp = 100;
+		manager->players[i].max_hp = 100;
+		manager->players[i].attack = 10;
+		strcpy(manager->players[i].status_hp, "healthy");
 		i++;
 	}
 	manager->number_of_player = 0;
 	manager->mutex = g_mutex;
-}
-
-void	add_player(int client_fd, t_client_manager *manager)
-{
-	int	i;
-
-	i = 0;
-	while (i < MAX_PLAYER)
-	{
-		if (manager->players[i].status == 0)
-		{
-			manager->players[i].fd = client_fd;
-			manager->players[i].status = 1;
-			return ;
-		}
-		i++;
-	}
-	log_date();
-	printf("EXCEDED MAX_PLAYER (%d)\n", MAX_PLAYER);
-}
-
-void	remove_player(int client_fd, t_client_manager *manager)
-{
-	int	i;
-
-	i = 0;
-	while (i < MAX_PLAYER)
-	{
-		if (manager->players[i].fd == client_fd)
-		{
-			manager->players[i].fd = -1;
-			manager->players[i].status = 0;
-			pthread_mutex_lock(&(manager->mutex));
-			manager->number_of_player -= 1;
-			pthread_mutex_unlock(&(manager->mutex));
-			return ;
-		}
-		i++;
-	}
 }

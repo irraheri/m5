@@ -29,14 +29,12 @@ int	chat_and_group_management(t_command test, t_command *result)
 			|| !strcmp(test.message, "GROUP"))
 			return (intermediate_step(test, result, 1));
 	}
-	else if (!(strcmp(test.type, "GROUP")))
+	else
 	{
 		if (!strcmp(test.message, "CREATE") || !strcmp(test.message, "INVITE")
 			|| !strcmp(test.message, "JOIN") || !strcmp(test.message, "LEAVE"))
 			return (intermediate_step(test, result, 0));
 	}
-	else
-		;
 	return (0);
 }
 
@@ -50,13 +48,11 @@ void	first_word_parsing_mess(t_command test, t_command *result)
 		strcpy(result->message, test.message);
 		return ;
 	}
-	else if (!(strcmp(test.type, "CHAT")) || !(strcmp(test.type, "GROUP")))
+	else
 	{
 		if (chat_and_group_management(test, result) == 1)
 			return ;
 	}
-	else
-		;
 	result->is_valid = 0;
 	strcpy(result->type, "ERROR");
 	strcpy(result->message, "ERR 901 SEND_FAILED\n");
@@ -69,7 +65,7 @@ void	one_word_parsing_mess(t_command test, t_command *result)
 	if (!strcmp(test.type, "CONNECT") || !strcmp(test.type, "MOVE")
 		|| !strcmp(test.type, "TAKE") || !strcmp(test.type, "DROP")
 		|| !strcmp(test.type, "TALK") || !strcmp(test.type, "ATTACK")
-		|| !strcmp(test.type, "QUEST"))
+		|| !strcmp(test.type, "QUEST") || !strcmp(test.type, "ABANDON_QUEST"))
 		strcpy(result->type, test.type);
 	else
 	{

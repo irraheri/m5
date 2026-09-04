@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 06:53:12 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/02 10:56:39 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/04 16:12:31 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	*wait_for_client(void *arg)
 
 int	end(int sock)
 {
-	printf("END OF THE PROGRAM\n");
+	printf("Thank you for trying our TAP\n");
 	close(sock);
 	return (0);
 }

@@ -6,11 +6,12 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:20 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/04 15:07:20 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/04 16:40:49 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../common.h"
+#include "../common.h"
+#include "world.h"
 
 typedef struct server_fd_plus_address
 {
@@ -22,6 +23,13 @@ typedef struct each_player_property
 {
 	int					fd;
 	int					status;
+	char				name[32];
+	t_list_of			items;
+	t_list_of			quests;
+	int					hp;
+	int					max_hp;
+	int					attack;
+	char				status_hp[16];
 }						t_player;
 
 typedef struct making_player_list
