@@ -1,0 +1,219 @@
+world:
+  start:
+    name: "Village_of_a_random_guy"
+    description: "Its like a docker environment, its about... nothing"
+    exits: ["none", "art.home", "none", "FIDE.home"]
+    npcs: []
+    items: []
+  FIDE.home:
+    name: "mate_in_1000"
+    description: "Here, here was the place where Bobby Fischer and Garry Kasparov had drawn."
+    exits: ["none", "middle_absurdist.home", "start", "thinkers.home"]
+    npcs: ["magnus_carlsen"]
+    items: ["rook"]
+  thinkers.home:
+    name: "chairs"
+    description: "If Schrodinger had a cat, the cat would never sit on those chairs"
+    exits: ["none", "west.side", "FIDE.home", "none"]
+    npcs: ["rene_descartes", "charles_darwin"]
+    items: []
+  art.home:
+    name: "nuit_etoilE"
+    description: "Some of the ugliest and maddest guys in this world have made something here, but only here..."
+    exits: ["start", "movie.directors", "none", "middle_absurdist.home"]
+    npcs: ["pablo_picasso"]
+    items: ["heaven"]
+  middle_absurdist.home:
+    name: "hell"
+    description: "If you dont suffer, lets suffer in this place"
+    exits: ["FIDE.home", "fiction.home", "art.home", "west.side"]
+    npcs: ["franz_kafka", "fiodor_dostoievsky"]
+  west.side:
+    name: "compton"
+    description: "you now about to witness the strenght of street knowledge"
+    exits: ["thinkers.home", "nazareth", "middle_absurdist.home", "none"]
+    npcs: ["snoop_dogg"]
+    items: ["diamond"]
+  movie.directors:
+    name: "pulp_fiction"
+    description: "seventh art, this place is where the sun shines, one flew over the cuckoo's nest"
+    exits: ["art.home", "none", "none", "fiction.home"]
+    npcs: ["martin_scorsesse"]
+    items: []
+  fiction.home:
+    name: "san_goku"
+    description: "the place where kids and true men live at"
+    exits: ["middle_absurdist.home", "none", "movie.directors", "nazareth"]
+    npcs: ["saitama"]
+    items: []
+  nazareth:
+    name: "lauryn_hill"
+    description: "if you there, you ugly"
+    exits: ["west.side", "none", "fiction.home", "none"]
+    npcs: ["donald_trump"]
+    items: ["gold"]
+
+items:
+  rook:
+    name: "end_game_chess_piece"
+    description: "it does orthogonal moves, nothing more"
+    obtainable: 1
+    heal: 0
+  heaven:
+    name: "live_like_this"
+    description: "this is heaven, where God is giving you the happyness you deserve"
+    obtainable: 0
+    heal: 0
+  philosophical_stone:
+    name: "existentialism"
+    description: "Existence precedes essence."
+    obtainable: 1
+    heal: 1
+  diamond:
+    name: "rihanna_thing"
+    description: "as rihanna said: shine bright like a diamond"
+    obtainable: 1
+    heal: 0
+  gold:
+    name: "au"
+    description: "valuable thing"
+    obtainable: 1
+    heal: 0
+  oscar:
+    name: "winner_thing"
+    description: "If you have it, now win the game"
+    obtainable: 0
+    heal: 1
+
+  
+npcs:
+  magnus_carlsen:
+    name: "world_chess_champion"
+    description: "i am the best chess player that ever been"
+    dialogues: ["play_queen", "play_rook"]
+    hp: -1
+    attack: -1
+    quest_id: "none"
+  rene_descartes:
+    name: "cartesian_man"
+    description: "i am cartesian as your ax+b and my haircut is Jesus's"
+    dialogues: ["ithinksoiam"]
+    hp: -1
+    attack: -1
+    quest_id: "none"
+  charles_darwin:
+    name: "evolution_man"
+    description: "eye of the tiger!!"
+    dialogues: ["survivor"]
+    hp: -1
+    attack: -1
+    quest_id: "none"
+  pablo_picasso:
+    name: "self_portrait"
+    description: "this is like joconde, but its me"
+    dialogues: []
+    hp: -1
+    attack: -1
+    quest_id: "trump_diamond"
+  franz_kafka:
+    name: "gregor_samsa"
+    description: "absurd means,... metamorphosis, and everything means,... metamorphosis"
+    dialogues: ["samsa"]
+    hp: -1
+    attack: -1
+    quest_id: "doogy_saitama"
+  fiodor_dostoievsky: 
+    name: "imadead"
+    description: "hell, do you know hell, ima suffering, so do you"
+    dialogues: ["citation1", "citation2", "citation3"]
+    hp: -1
+    attack: -1
+    quest_id: "none"
+  snoop_dogg:
+    name: "snoop_doggy_dogg"
+    description: "sweet chariot stop, let me ride."
+    dialogues: ["doggy"]
+    hp: 40
+    attack: 2
+    quest_id: "none"
+  martin_scorsesse:
+    name: "goodfela"
+    description: "the goodfelas, shutter island, the wolf of wallstreet, the departed director"
+    dialogues: ["pulpy"]
+    hp: -1
+    attack: -1
+    quest_id: "gold_rook"
+  saitama:
+    name: "one_punch_man"
+    description: "the bald, the bald and the bald"
+    dialogues: []
+    hp: 100
+    attack: 30
+    quest_id: "none"
+  donald_trump:
+    name: "bald_man"
+    description: "the united states president"
+    dialogues: ["president_dialogue0", "dialogues_about_religion"]
+    hp: 200
+    attack: 10
+    quest_id: "none"
+
+quests:
+  trump_diamond:
+    name: "getting_rich"
+    description: "kill trump and take diamond, now art is about money"
+    missions: ["kill_trump", "take_diamond"]
+    reward: "none"
+    npc_owner: "pablo_picasso"
+  doogy_saitama:
+    name: "philosopher_quest"
+    description: "they fool, we need to kill them"
+    missions: ["kill_snoop", "kill_saitama"]
+    reward: "philosophical_stone"
+    npc_owner: "franz_kafka"
+  gold_rook:
+    name: "new_movie"
+    description: "need items for the new movie"
+    missions: ["take_gold", "take_rook", "take_philosophical_stone"]
+    reward: "oscar"
+    npc_owner: "martin_scorsesse"
+
+missions:
+  kill_trump:
+    type: "kill"
+    goal: "donald_trump"
+  take_diamond:
+    type: "take"
+    goal: "diamond"
+  kill_snoop:
+    type: "kill"
+    goal: "snoop_dogg"
+  kill_saitama:
+    type: "kill"
+    goal: "saitama"
+  take_gold:
+    type: "take"
+    goal: "gold"
+  take_rook:
+    type: "take"
+    goal: "rook"
+  take_philosophical_stone:
+    type: "take"
+    goal: "philosophical_stone"
+
+dialogues:
+  play_queen: "The queen is the most powerful piece"
+  play_rook: "In the endgame, the rook is the soul of chess."
+  ithinksoiam: "Je pense donc je suis."
+  survivor: "It is not the strongest of the species that survives, but the one most adaptable to change."
+  samsa: "I woke up one morning and found myself transformed into a monstrous vermin."
+  citation1: "The mystery of human existence lies not in just staying alive, but in finding something to live for."
+  citation2: "Pain and suffering are always inevitable for a large intelligence and a deep heart."
+  citation3: "To go wrong in one's own way is better than to go right in someone else's."
+  doggy: "Gin and juice, baby. That's the Compton way."
+  pulpy: "As far back as I can remember, I always wanted to be a gangster."
+  president_dialogue0: "I'm the greatest president America has ever had, believe me."
+  dialogues_about_religion: "I love God, I'm a very religious person. But I never ask for forgiveness, that's my thing."
+
+groups:
+  name: "sect"

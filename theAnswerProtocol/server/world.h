@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 15:09:51 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/04 16:12:49 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/04 19:05:07 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct mission
 typedef struct dialogue
 {
 	char			id[32];
-	char			content[32];
+	char			content[128];
 }					t_dialogue;
 
 typedef struct group
