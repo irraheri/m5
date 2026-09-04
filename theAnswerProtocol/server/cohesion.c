@@ -10,24 +10,11 @@ void	multi_word_parsing(char *buf, t_command *result)
 void	first_word_parsing(char *buf, t_command *result)
 {
 	result->is_valid = 1;
-	if (!strcmp(buf, "CONNECT"))
-		strcpy(result->type, "CONNECT");
-	else if (!strcmp(buf, "MOVE"))
-		strcpy(result->type, "MOVE");
-	else if (!strcmp(buf, "TAKE"))
-		strcpy(result->type, "TAKE");
-	else if (!strcmp(buf, "DROP"))
-		strcpy(result->type, "DROP");
-	else if (!strcmp(buf, "TALK"))
-		strcpy(result->type, "TALK");
-	else if (!strcmp(buf, "ATTACK"))
-		strcpy(result->type, "ATTACK");
-	else if (!strcmp(buf, "QUEST"))
-		strcpy(result->type, "QUEST");
-	else if (!strcmp(buf, "CHAT"))
-		strcpy(result->type, "CHAT");
-	else if (!strcmp(buf, "GROUP"))
-		strcpy(result->type, "GROUP");
+	if (!strcmp(buf, "CONNECT") || !strcmp(buf, "MOVE") || !strcmp(buf, "TAKE")
+		|| !strcmp(buf, "DROP") || !strcmp(buf, "TALK") || !strcmp(buf,
+			"ATTACK") || !strcmp(buf, "QUEST") || !strcmp(buf, "CHAT")
+		|| !strcmp(buf, "GROUP"))
+		strcpy(result->type, buf);
 	else
 	{
 		result->is_valid = 0;
@@ -40,18 +27,10 @@ void	one_word_parsing(char *buf, t_command *result)
 {
 	result->is_valid = 1;
 	strcpy(result->message, "one column message\n");
-	if (!strcmp(buf, "LOOK"))
-		strcpy(result->type, "LOOK");
-	else if (!strcmp(buf, "QUIT"))
-		strcpy(result->type, "QUIT");
-	else if (!strcmp(buf, "WHO"))
-		strcpy(result->type, "WHO");
-	else if (!strcmp(buf, "INVENTORY"))
-		strcpy(result->type, "INVENTORY");
-	else if (!strcmp(buf, "STATUS"))
-		strcpy(result->type, "STATUS");
-	else if (!strcmp(buf, "QUESTS"))
-		strcpy(result->type, "QUESTS");
+	if (!strcmp(buf, "LOOK") || !strcmp(buf, "QUIT") || !strcmp(buf, "WHO")
+		|| !strcmp(buf, "INVENTORY") || !strcmp(buf, "STATUS") || !strcmp(buf,
+			"QUESTS"))
+		strcpy(result->type, buf);
 	else
 	{
 		result->is_valid = 0;
