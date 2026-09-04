@@ -1,5 +1,4 @@
 #include "cohesion.h"
-#include "server.h"
 
 int	intermediate_step(t_command test, t_command *result, int chat)
 {
