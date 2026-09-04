@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 15:09:51 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/04 19:05:07 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/05 01:00:54 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,69 +14,69 @@
 
 typedef struct s_list_of
 {
-	char			ids[MAX_LEN][32];
+	char			ids[MAX_LEN][BUFFER_SIZE];
 	int				len;
 }					t_list_of;
 
 typedef struct s_item
 {
-	char			id[32];
-	char			name[32];
-	char			description[64];
+	char			id[BUFFER_SIZE];
+	char			name[BUFFER_SIZE];
+	char			description[BUFFER_SIZE];
 	int				obtainable;
 	int				heal;
 }					t_item;
 
 typedef struct npc
 {
-	char			id[32];
-	char			name[32];
-	char			description[64];
+	char			id[BUFFER_SIZE];
+	char			name[BUFFER_SIZE];
+	char			description[BUFFER_SIZE];
 	t_list_of		dialogues;
 	int				dialogue_index;
 	int				hp;
 	int				attack;
-	char			quest_id[32];
+	char			quest_id[BUFFER_SIZE];
 }					t_npc;
 
 typedef struct quest
 {
-	char			id[32];
-	char			name[32];
-	char			description[64];
+	char			id[BUFFER_SIZE];
+	char			name[BUFFER_SIZE];
+	char			description[BUFFER_SIZE];
 	t_list_of		missions;
 	int				available;
 	int				done;
-	char			reward_id[32];
-	char			npc_owner_id[32];
+	char			reward_id[BUFFER_SIZE];
+	char			npc_owner_id[BUFFER_SIZE];
 }					t_quest;
 
 typedef struct mission
 {
-	char			id[32];
-	char			name[32];
-	char			description[64];
+	char			id[BUFFER_SIZE];
+	char			name[BUFFER_SIZE];
+	char			description[BUFFER_SIZE];
 	char			type[8];
-	char			goal_id[32];
+	char			goal_id[BUFFER_SIZE];
 }					t_mission;
 
 typedef struct dialogue
 {
-	char			id[32];
-	char			content[128];
+	char			id[BUFFER_SIZE];
+	char			content[BUFFER_SIZE];
 }					t_dialogue;
 
 typedef struct group
 {
-	char			name[32];
+	char			name[BUFFER_SIZE];
 	t_list_of		players;
 }					t_group;
 
 typedef struct room
 {
-	char			id[32];
-	char			name[32];
-	char			description[64];
+	char			id[BUFFER_SIZE];
+	char			name[BUFFER_SIZE];
+	char			description[BUFFER_SIZE];
 	t_list_of		exits;
 	t_list_of		npcs;
 	t_list_of		items;
