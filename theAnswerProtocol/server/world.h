@@ -6,10 +6,12 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 15:09:51 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/05 01:00:54 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/05 05:51:43 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
 #define MAX_LEN 128
 
 typedef struct s_list_of

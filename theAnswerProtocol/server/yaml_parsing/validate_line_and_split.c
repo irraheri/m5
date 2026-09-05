@@ -6,13 +6,13 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/05 02:10:36 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/05 03:18:19 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/05 05:21:12 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "yaml.h"
 
-int	is_validate(char *line, t_line_type norm)
+int	is_valid(char *line, t_line_type norm)
 {
 	char	args[BUFFER_SIZE];
 

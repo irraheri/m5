@@ -1,219 +1,216 @@
 world:
   start:
-    name: "Village_of_a_random_guy"
-    description: "Its like a docker environment, its about... nothing"
-    exits: ["none", "art.home", "none", "FIDE.home"]
+    name: "Village_of_Ashfield"
+    description: "A quiet rural settlement at the edge of the kingdom, known for its inn and its silence."
+    exits: ["none", "art.gallery", "none", "FIDE.hall"]
     npcs: []
     items: []
-  FIDE.home:
-    name: "mate_in_1000"
-    description: "Here, here was the place where Bobby Fischer and Garry Kasparov had drawn."
-    exits: ["none", "middle_absurdist.home", "start", "thinkers.home"]
+  FIDE.hall:
+    name: "The Grandmaster's Chamber"
+    description: "A hall where the greatest chess minds have debated strategy for decades."
+    exits: ["none", "philosophers.retreat", "start", "thinkers.library"]
     npcs: ["magnus_carlsen"]
     items: ["rook"]
-  thinkers.home:
-    name: "chairs"
-    description: "If Schrodinger had a cat, the cat would never sit on those chairs"
-    exits: ["none", "west.side", "FIDE.home", "none"]
+  thinkers.library:
+    name: "The Reading Room"
+    description: "A vast library filled with ancient texts and modern treatises on logic and nature."
+    exits: ["none", "west.end", "FIDE.hall", "none"]
     npcs: ["rene_descartes", "charles_darwin"]
     items: []
-  art.home:
-    name: "nuit_etoilE"
-    description: "Some of the ugliest and maddest guys in this world have made something here, but only here..."
-    exits: ["start", "movie.directors", "none", "middle_absurdist.home"]
+  art.gallery:
+    name: "The Starry Atelier"
+    description: "A workshop where visions of chaos and beauty have been painted into existence."
+    exits: ["start", "cinema.house", "none", "philosophers.retreat"]
     npcs: ["pablo_picasso"]
     items: ["heaven"]
-  middle_absurdist.home:
-    name: "hell"
-    description: "If you dont suffer, lets suffer in this place"
-    exits: ["FIDE.home", "fiction.home", "art.home", "west.side"]
+  philosophers.retreat:
+    name: "The Abyss"
+    description: "A place of deep reflection and existential anguish, where words weigh heavy."
+    exits: ["FIDE.hall", "fiction.loft", "art.gallery", "west.end"]
     npcs: ["franz_kafka", "fiodor_dostoievsky"]
-  west.side:
-    name: "compton"
-    description: "you now about to witness the strenght of street knowledge"
-    exits: ["thinkers.home", "nazareth", "middle_absurdist.home", "none"]
+    items: []
+  west.end:
+    name: "The Crossroads"
+    description: "A dusty junction where travelers from all walks of life exchange stories."
+    exits: ["thinkers.library", "chapel.hill", "philosophers.retreat", "none"]
     npcs: ["snoop_dogg"]
     items: ["diamond"]
-  movie.directors:
-    name: "pulp_fiction"
-    description: "seventh art, this place is where the sun shines, one flew over the cuckoo's nest"
-    exits: ["art.home", "none", "none", "fiction.home"]
+  cinema.house:
+    name: "The Projection Room"
+    description: "A dark room where flickering images have shaped the dreams of many."
+    exits: ["art.gallery", "none", "none", "fiction.loft"]
     npcs: ["martin_scorsesse"]
     items: []
-  fiction.home:
-    name: "san_goku"
-    description: "the place where kids and true men live at"
-    exits: ["middle_absurdist.home", "none", "movie.directors", "nazareth"]
+  fiction.loft:
+    name: "The Epicenter"
+    description: "A cluttered attic filled with comic books, myths, and tales of heroism."
+    exits: ["philosophers.retreat", "none", "cinema.house", "chapel.hill"]
     npcs: ["saitama"]
     items: []
-  nazareth:
-    name: "lauryn_hill"
-    description: "if you there, you ugly"
-    exits: ["west.side", "none", "fiction.home", "none"]
+  chapel.hill:
+    name: "The Pinnacle"
+    description: "A windswept hilltop overlooking the kingdom, often visited by the powerful."
+    exits: ["west.end", "none", "fiction.loft", "none"]
     npcs: ["donald_trump"]
     items: ["gold"]
 
 items:
   rook:
-    name: "end_game_chess_piece"
-    description: "it does orthogonal moves, nothing more"
-    obtainable: 1
-    heal: 0
+    name: "Chess Rook"
+    description: "A carved stone piece, simple but formidable in the endgame."
+    obtainable: "1"
+    heal: "0"
   heaven:
-    name: "live_like_this"
-    description: "this is heaven, where God is giving you the happyness you deserve"
-    obtainable: 0
-    heal: 0
+    name: "Gilded Canvas"
+    description: "A masterpiece that seems to radiate light, rumored to hold a secret."
+    obtainable: "0"
+    heal: "0"
   philosophical_stone:
-    name: "existentialism"
-    description: "Existence precedes essence."
-    obtainable: 1
-    heal: 1
+    name: "Philosopher's Fragment"
+    description: "A shard of a legendary artifact said to contain the essence of thought itself."
+    obtainable: "1"
+    heal: "1"
   diamond:
-    name: "rihanna_thing"
-    description: "as rihanna said: shine bright like a diamond"
-    obtainable: 1
-    heal: 0
+    name: "Uncut Diamond"
+    description: "A rough stone that catches the light with unusual brilliance."
+    obtainable: "1"
+    heal: "0"
   gold:
-    name: "au"
-    description: "valuable thing"
-    obtainable: 1
-    heal: 0
+    name: "Gold Ingot"
+    description: "A heavy bar of pure gold, stamped with an ancient seal."
+    obtainable: "1"
+    heal: "0"
   oscar:
-    name: "winner_thing"
-    description: "If you have it, now win the game"
-    obtainable: 0
-    heal: 1
+    name: "Golden Laurel"
+    description: "A symbol of ultimate achievement, coveted by all who seek glory."
+    obtainable: "0"
+    heal: "1"
 
-  
 npcs:
   magnus_carlsen:
-    name: "world_chess_champion"
-    description: "i am the best chess player that ever been"
+    name: "Grandmaster Magnus"
+    description: "The reigning champion of the board, calm and calculating."
     dialogues: ["play_queen", "play_rook"]
-    hp: -1
-    attack: -1
+    hp: "-1"
+    attack: "-1"
     quest_id: "none"
   rene_descartes:
-    name: "cartesian_man"
-    description: "i am cartesian as your ax+b and my haircut is Jesus's"
+    name: "René the Skeptic"
+    description: "A philosopher in a worn cloak, forever doubting, forever thinking."
     dialogues: ["ithinksoiam"]
-    hp: -1
-    attack: -1
+    hp: "-1"
+    attack: "-1"
     quest_id: "none"
   charles_darwin:
-    name: "evolution_man"
-    description: "eye of the tiger!!"
+    name: "Charles the Naturalist"
+    description: "A bearded man with a notebook, observing the world with quiet intensity."
     dialogues: ["survivor"]
-    hp: -1
-    attack: -1
+    hp: "-1"
+    attack: "-1"
     quest_id: "none"
   pablo_picasso:
-    name: "self_portrait"
-    description: "this is like joconde, but its me"
+    name: "Pablo the Visionary"
+    description: "A painter with piercing eyes, always ready to reshape reality."
     dialogues: []
-    hp: -1
-    attack: -1
+    hp: "-1"
+    attack: "-1"
     quest_id: "trump_diamond"
   franz_kafka:
-    name: "gregor_samsa"
-    description: "absurd means,... metamorphosis, and everything means,... metamorphosis"
+    name: "Franz the Scribe"
+    description: "A pale, anxious figure, haunted by the absurdity of bureaucracy."
     dialogues: ["samsa"]
-    hp: -1
-    attack: -1
+    hp: "-1"
+    attack: "-1"
     quest_id: "doogy_saitama"
   fiodor_dostoievsky: 
-    name: "imadead"
-    description: "hell, do you know hell, ima suffering, so do you"
+    name: "Fyodor the Confessor"
+    description: "A gaunt man with feverish eyes, speaking of suffering and redemption."
     dialogues: ["citation1", "citation2", "citation3"]
-    hp: -1
-    attack: -1
+    hp: "-1"
+    attack: "-1"
     quest_id: "none"
   snoop_dogg:
-    name: "snoop_doggy_dogg"
-    description: "sweet chariot stop, let me ride."
+    name: "Calvin the Storyteller"
+    description: "A smooth-talking wanderer with a gift for verse and a knowing smile."
     dialogues: ["doggy"]
-    hp: 40
-    attack: 2
+    hp: "40"
+    attack: "2"
     quest_id: "none"
   martin_scorsesse:
-    name: "goodfela"
-    description: "the goodfelas, shutter island, the wolf of wallstreet, the departed director"
+    name: "Martin the Auteur"
+    description: "A director with a sharp suit and a sharper tongue, obsessed with detail."
     dialogues: ["pulpy"]
-    hp: -1
-    attack: -1
+    hp: "-1"
+    attack: "-1"
     quest_id: "gold_rook"
   saitama:
-    name: "one_punch_man"
-    description: "the bald, the bald and the bald"
+    name: "Saitama the Bored"
+    description: "A bald man in a plain cape, whose power is matched only by his ennui."
     dialogues: []
-    hp: 100
-    attack: 30
+    hp: "100"
+    attack: "30"
     quest_id: "none"
   donald_trump:
-    name: "bald_man"
-    description: "the united states president"
+    name: "The Gilded Orator"
+    description: "A man of wealth and bombast, standing atop the hill with a golden gaze."
     dialogues: ["president_dialogue0", "dialogues_about_religion"]
-    hp: 200
-    attack: 10
+    hp: "200"
+    attack: "10"
     quest_id: "none"
 
 quests:
   trump_diamond:
-    name: "getting_rich"
-    description: "kill trump and take diamond, now art is about money"
-    missions: ["kill_trump", "take_diamond"]
+    name: "The Exchange"
+    description: "Retrieve the diamond from the hilltop and bring it to the atelier."
+    missions: ["take_diamond_from_trump"]
     reward: "none"
     npc_owner: "pablo_picasso"
   doogy_saitama:
-    name: "philosopher_quest"
-    description: "they fool, we need to kill them"
-    missions: ["kill_snoop", "kill_saitama"]
+    name: "The Clearing"
+    description: "Remove the wanderer and the bored one to restore peace to the crossroads."
+    missions: ["neutralize_snoop", "neutralize_saitama"]
     reward: "philosophical_stone"
     npc_owner: "franz_kafka"
   gold_rook:
-    name: "new_movie"
-    description: "need items for the new movie"
-    missions: ["take_gold", "take_rook", "take_philosophical_stone"]
+    name: "The Trilogy"
+    description: "Gather the three relics to complete the director's vision."
+    missions: ["acquire_gold", "acquire_rook", "acquire_stone"]
     reward: "oscar"
     npc_owner: "martin_scorsesse"
 
 missions:
-  kill_trump:
-    type: "kill"
-    goal: "donald_trump"
-  take_diamond:
+  take_diamond_from_trump:
     type: "take"
     goal: "diamond"
-  kill_snoop:
+  neutralize_snoop:
     type: "kill"
     goal: "snoop_dogg"
-  kill_saitama:
+  neutralize_saitama:
     type: "kill"
     goal: "saitama"
-  take_gold:
+  acquire_gold:
     type: "take"
     goal: "gold"
-  take_rook:
+  acquire_rook:
     type: "take"
     goal: "rook"
-  take_philosophical_stone:
+  acquire_stone:
     type: "take"
     goal: "philosophical_stone"
 
 dialogues:
-  play_queen: "The queen is the most powerful piece"
-  play_rook: "In the endgame, the rook is the soul of chess."
-  ithinksoiam: "Je pense donc je suis."
-  survivor: "It is not the strongest of the species that survives, but the one most adaptable to change."
-  samsa: "I woke up one morning and found myself transformed into a monstrous vermin."
-  citation1: "The mystery of human existence lies not in just staying alive, but in finding something to live for."
-  citation2: "Pain and suffering are always inevitable for a large intelligence and a deep heart."
-  citation3: "To go wrong in one's own way is better than to go right in someone else's."
-  doggy: "Gin and juice, baby. That's the Compton way."
-  pulpy: "As far back as I can remember, I always wanted to be a gangster."
-  president_dialogue0: "I'm the greatest president America has ever had, believe me."
-  dialogues_about_religion: "I love God, I'm a very religious person. But I never ask for forgiveness, that's my thing."
+  play_queen: "The queen is the most versatile piece on the board."
+  play_rook: "In the endgame, control of the rook's file is everything."
+  ithinksoiam: "I think, therefore I am."
+  survivor: "It is not the strongest that survive, but the most adaptable."
+  samsa: "I awoke one morning to find myself transformed into something unrecognizable."
+  citation1: "The mystery of existence is not in survival, but in meaning."
+  citation2: "Suffering is the price of a deep consciousness."
+  citation3: "Better to err on your own path than to walk another's perfectly."
+  doggy: "The road is long, but the stories make it shorter."
+  pulpy: "I've always been drawn to the edge of the law."
+  president_dialogue0: "I have a vision, and it's unparalleled."
+  dialogues_about_religion: "I believe in greatness, and I believe in grace."
 
 groups:
   name: "sect"
