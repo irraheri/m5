@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 23:54:48 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/05 06:17:39 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/07 10:51:39 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,10 @@ int				validate_list(char *args);
 int				is_valid(char *line, t_line_type norm);
 int				split(char *args, int index, char *sandbox);
 void			initialize_world_creator(void);
+
+void			add_something(char *result, t_line_type line_type);
+int				second_chance(char *result, t_line_type line_type);
+t_line_type		second_next_line_type(t_line_type line_type);
+t_line_type		next_line_type(t_line_type line_type);
+t_line_type		generate_line_type(int level, char *key, int needs_arg,
+					char *type);
