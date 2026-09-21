@@ -213,6 +213,6 @@ dialogues:
   dialogues_about_religion: "I believe in greatness, and I believe in grace."
 
 groups:
-  name: "sect"
+  name: "global"
 
 #EOF

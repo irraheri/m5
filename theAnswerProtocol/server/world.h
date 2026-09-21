@@ -6,12 +6,14 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 15:09:51 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/05 05:51:43 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/21 09:15:56 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#define BUFFER_SIZE 1024
 #define MAX_LEN 128
 
 typedef struct s_list_of
@@ -56,8 +58,6 @@ typedef struct quest
 typedef struct mission
 {
 	char			id[BUFFER_SIZE];
-	char			name[BUFFER_SIZE];
-	char			description[BUFFER_SIZE];
 	char			type[8];
 	char			goal_id[BUFFER_SIZE];
 }					t_mission;
@@ -137,3 +137,5 @@ typedef struct world
 	t_all_dialogues	dialogues;
 	t_all_groups	groups;
 }					t_world;
+
+void				initialize_world(t_world *world);

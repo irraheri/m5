@@ -6,14 +6,17 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:16 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/07 06:58:37 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/21 08:15:27 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
+#include "world.h"
 
 t_property			g_server;
 t_client_manager	g_manager;
+t_world				g_world;
+
 
 void	handle_shutdown(int sig)
 {
@@ -100,6 +103,7 @@ int	main(void)
 	bind(g_server.server_fd, (struct sockaddr *)&(g_server.address),
 		sizeof(g_server.address));
 	listen(g_server.server_fd, 128);
+	initialize_world(&g_world);
 	initialize_client_manager(&g_manager);
 	log_date();
 	printf("Server is initialized\n");
