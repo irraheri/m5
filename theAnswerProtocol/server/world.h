@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 15:09:51 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/21 09:15:56 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/21 09:26:29 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <stdlib.h>
 #include <string.h>
 #define BUFFER_SIZE 1024
-#define MAX_LEN 128
+#define MAX_LEN 20
 
 typedef struct s_list_of
 {
-	char			ids[MAX_LEN][BUFFER_SIZE];
+	char			ids[MAX_LEN][32];
 	int				len;
 }					t_list_of;
 

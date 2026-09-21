@@ -6,12 +6,11 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:16 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/21 08:15:27 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/21 09:26:43 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
-#include "world.h"
 
 t_property			g_server;
 t_client_manager	g_manager;
