@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:18 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/07 06:57:58 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/22 10:22:41 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	initialize_client_manager(t_client_manager *manager)
 	{
 		manager->players[i].fd = -1;
 		manager->players[i].status = 0;
-		strcpy(manager->players[i].name, "none");
+		strcpy(manager->players[i].name, "UNAUTHENTICATED");
 		manager->players[i].items.len = 0;
 		manager->players[i].quests.len = 0;
 		manager->players[i].hp = 100;

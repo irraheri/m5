@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:20 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/21 09:19:46 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/22 10:58:32 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ void					log_date(void);
 void					print_ip_addr(void);
 void					define_server_property(t_property *server_property);
 void					initialize_client_manager(t_client_manager *manager);
-void					add_player(int client_fd, t_client_manager *manager);
-t_signal				cohesion(int client_fd, char *buf);
+void					add_player(int client_fd, t_client_manager *manager,
+							t_world *world);
 int						player_id(int client_fd, t_client_manager gmanager);
 void					remove_player(int client_fd, t_client_manager *manager);
+void					remove_player_in_world(int client_fd, t_world *world);
+t_signal				cohesion(int client_fd, char *buf, t_world *g_world,
+							t_client_manager *g_manager);

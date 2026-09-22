@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:16 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/21 09:26:43 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/22 11:00:33 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,14 @@ void	*client_host(void *arg)
 			log_date();
 			printf("Player %d DISCONNECTED\n", player_id(client_id, g_manager));
 			remove_player(client_id, &g_manager);
+			remove_player_in_world(client_id, &g_world);
 			break ;
 		}
 		log_date();
 		buf[strlen(buf) - 1] = '\0';
 		printf("RECEIVED '%s' FROM PLAYER %d\n", buf, player_id(client_id,
 				g_manager));
-		rec = cohesion(client_id, buf);
+		rec = cohesion(client_id, buf, &g_world, &g_manager);
 		server_act(rec);
 	}
 	close(client_id);
@@ -79,7 +80,7 @@ void	server_routine(void)
 	if (client_fd < 0)
 		return ;
 	pthread_mutex_lock(&(g_manager.mutex));
-	add_player(client_fd, &g_manager);
+	add_player(client_fd, &g_manager, &g_world);
 	g_manager.number_of_player += 1;
 	pthread_mutex_unlock(&(g_manager.mutex));
 	inet_ntop(AF_INET, &client_addr.sin_addr, client_ip, sizeof(client_ip));

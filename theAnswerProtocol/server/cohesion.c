@@ -55,7 +55,8 @@ t_command	first_process(char *buf)
 	return (result);
 }
 
-t_signal	cohesion(int client_fd, char *buf)
+t_signal	cohesion(int client_fd, char *buf, t_world *g_world,
+		t_client_manager *g_manager)
 {
 	t_signal	sign;
 	t_command	test;
@@ -79,6 +80,6 @@ t_signal	cohesion(int client_fd, char *buf)
 			return (sign);
 		}
 		else
-			return (third_process(test, client_fd));
+			return (third_process(test, client_fd, g_world, g_manager));
 	}
 }

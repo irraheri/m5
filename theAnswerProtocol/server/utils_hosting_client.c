@@ -1,8 +1,9 @@
 #include "server.h"
 
-void	add_player(int client_fd, t_client_manager *manager)
+void	add_player(int client_fd, t_client_manager *manager, t_world *world)
 {
-	int	i;
+	int		i;
+	char	client_fd_char[4];
 
 	i = 0;
 	while (i < MAX_PLAYER)
@@ -11,6 +12,13 @@ void	add_player(int client_fd, t_client_manager *manager)
 		{
 			manager->players[i].fd = client_fd;
 			manager->players[i].status = 1;
+			snprintf(
+				world->rooms.rooms[0].players.ids[
+				world->rooms.rooms[0].players.len],
+				sizeof(world->rooms.rooms[0].players.ids[
+					world->rooms.rooms[0].players.len]),
+				"%d", client_fd);
+			world->rooms.rooms[0].players.len += 1;
 			return ;
 		}
 		i++;
@@ -53,4 +61,33 @@ int	player_id(int client_fd, t_client_manager gmanager)
 			i++;
 	}
 	return (0);
+}
+
+void	remove_player_in_world(int client_fd, t_world *world)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	while (i < world->rooms.len)
+	{
+		j = 0;
+		while (j < world->rooms.rooms[i].players.len)
+		{
+			if (client_fd == atoi(world->rooms.rooms[i].players.ids[j]))
+			{
+				while (j < world->rooms.rooms[i].players.len - 1)
+				{
+					strcpy(world->rooms.rooms[i].players.ids[j],
+						world->rooms.rooms[i].players.ids[j + 1]);
+					j++;
+				}
+				world->rooms.rooms[i].players.len--;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
 }

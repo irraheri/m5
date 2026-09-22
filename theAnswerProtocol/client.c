@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 06:53:12 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/04 16:12:31 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/22 10:47:07 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	*wait_for_server(void *arg)
 			g_disconnect = 1;
 			return (NULL);
 		}
+		else if (g_disconnect == 1)
+			break;
 		pthread_mutex_lock(&g_mutex);
 		printf("Serveur: %s", buffer);
 		pthread_mutex_unlock(&g_mutex);
@@ -49,6 +51,11 @@ void	*wait_for_client(void *arg)
 		fgets(buffer, BUFFER_SIZE, stdin);
 		if (g_disconnect == 1)
 			break ;
+		else if (!strcmp(buffer, "QUIT\n"))
+		{
+			printf("Serveur: OK bye\n");
+			g_disconnect = 1;
+		}
 		send(sock, buffer, strlen(buffer), 0);
 	}
 	return (NULL);
@@ -56,7 +63,9 @@ void	*wait_for_client(void *arg)
 
 int	end(int sock)
 {
+	printf("=============================\n");
 	printf("Thank you for trying our TAP\n");
+	printf("=============================\n");
 	close(sock);
 	return (0);
 }
@@ -81,7 +90,7 @@ int	main(int argc, char **argv)
 		printf("NO SERVER TO CONNECT WITH!\n");
 		return (end(sock));
 	}
-	printf("Connecté au serveur\n");
+	printf("OK hello proto=1\n");
 	pthread_create(&(client_mods[0]), NULL, wait_for_server, &sock);
 	pthread_create(&(client_mods[1]), NULL, wait_for_client, &sock);
 	pthread_join(client_mods[0], NULL);
