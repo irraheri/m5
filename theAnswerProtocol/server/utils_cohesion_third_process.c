@@ -50,7 +50,7 @@ void	look_c_add_players(t_command *test, t_room room,
 	while (i < room.players.len)
 	{
 		j = 0;
-		while (j < g_client_manager->number_of_player)
+		while (j < MAX_PLAYER)
 		{
 			if (g_client_manager->players[j].fd == atoi(room.players.ids[i]))
 			{

@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 15:09:51 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/21 09:26:29 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/24 07:03:44 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct quest
 	char			name[BUFFER_SIZE];
 	char			description[BUFFER_SIZE];
 	t_list_of		missions;
+	int				done_missions;
 	int				available;
 	int				done;
 	char			reward_id[BUFFER_SIZE];

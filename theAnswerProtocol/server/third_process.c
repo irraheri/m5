@@ -1,5 +1,3 @@
-#include "server.h"
-#include "utils.h"
 #include "third_process.h"
 
 void	look_c(t_command *test, t_room room, t_client_manager *g_manager)
@@ -52,23 +50,26 @@ void	print_ing_state_mess(t_command *test, int client_fd, t_world *g_world,
 {
 	if (!strcmp(test->type, "LOOK"))
 		look_state_proc(test, client_fd, g_world, g_manager);
-	else if (!strcmp(test->type, "QUIT"))
-		return ;
-	// else if (!strcmp(test.type, "WHO"))
-	// 	who_state_proc(test, client_fd, g_world, g_manager);
-	// else if (!strcmp(test.type, "INVENTORY"))
-	// 	inventory_state_proc(test, client_fd, g_world, g_manager);
-	// else if (!strcmp(test.type, "STATUS"))
-	// 	status_state_proc(test, client_fd, g_world, g_manager);
-	// else
-	// 	quests_state_proc(test, client_fd, g_world, g_manager);
+	else if (!strcmp(test->type, "WHO"))
+		who_state_proc(test, g_manager);
+	else if (!strcmp(test->type, "INVENTORY"))
+		inventory_state_proc(test, g_manager, client_fd);
+	else if (!strcmp(test->type, "STATUS"))
+		status_state_proc(test, g_manager, client_fd);
+	else if (!strcmp(test->type, "QUESTS"))
+	{
+		quests_state_proc(test, g_manager, g_world, client_fd);
+		strcat(test->message, "]\n");
+	}
+	else if (!strcmp(test->type, "CONNECT"))
+		connect_state_proc(test, g_manager, client_fd);
 }
 
 int	is_state(t_command test)
 {
-	if (!strcmp(test.type, "LOOK"))
+	if (!strcmp(test.type, "CONNECT"))
 		return (1);
-	else if (!strcmp(test.type, "QUIT"))
+	else if (!strcmp(test.type, "LOOK"))
 		return (1);
 	else if (!strcmp(test.type, "WHO"))
 		return (1);
@@ -96,9 +97,7 @@ t_signal	third_process(t_command test, int client_fd, t_world *g_world,
 	}
 	else
 	{
-		strcpy(result.message, "ok my friend\n");
-		result.number_of_them = 1;
-		result.all_fd[0] = client_fd;
+
 	}
 	return (result);
 }

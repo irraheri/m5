@@ -84,6 +84,7 @@ void	initialize_quests(t_all_quests *quests)
 	strcpy(quests->quests[0].description,
 		"Retrieve the diamond from the hilltop and bring it to the atelier.");
 	quests->quests[0].missions = missions[0];
+	quests->quests[0].done_missions = 0;
 	strcpy(quests->quests[0].reward_id, "none");
 	strcpy(quests->quests[0].npc_owner_id, "pablo_picasso");
 	quests->quests[0].available = 1;
@@ -96,6 +97,7 @@ void	initialize_quests(t_all_quests *quests)
 	strcpy(quests->quests[1].description,
 		"Remove the wanderer and the bored one to restore peace to the crossroads.");
 	quests->quests[1].missions = missions[1];
+	quests->quests[1].done_missions = 0;
 	strcpy(quests->quests[1].reward_id, "philosophical_stone");
 	strcpy(quests->quests[1].npc_owner_id, "franz_kafka");
 	quests->quests[1].available = 1;
@@ -109,6 +111,7 @@ void	initialize_quests(t_all_quests *quests)
 	strcpy(quests->quests[2].description,
 		"Gather the three relics to complete the director's vision.");
 	quests->quests[2].missions = missions[2];
+	quests->quests[2].done_missions = 0;
 	strcpy(quests->quests[2].reward_id, "oscar");
 	strcpy(quests->quests[2].npc_owner_id, "martin_scorsesse");
 	quests->quests[2].available = 1;

@@ -39,6 +39,13 @@ void	remove_player(int client_fd, t_client_manager *manager)
 		{
 			manager->players[i].fd = -1;
 			manager->players[i].status = 0;
+			strcpy(manager->players[i].name, "UNAUTHENTICATED");
+			manager->players[i].items.len = 0;
+			manager->players[i].quests.len = 0;
+			manager->players[i].hp = 100;
+			manager->players[i].max_hp = 100;
+			manager->players[i].attack = 10;
+			strcpy(manager->players[i].status_hp, "healthy");
 			pthread_mutex_lock(&(manager->mutex));
 			manager->number_of_player -= 1;
 			pthread_mutex_unlock(&(manager->mutex));
