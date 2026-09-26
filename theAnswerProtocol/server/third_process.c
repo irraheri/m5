@@ -88,16 +88,18 @@ t_signal	third_process(t_command test, int client_fd, t_world *g_world,
 {
 	t_signal	result;
 
+	result.additional_group.number_of_them = 0;
 	if (is_state(test))
 	{
 		print_ing_state_mess(&test, client_fd, g_world, g_manager);
-		strcpy(result.message, test.message);
+		strcpy(result.specific_to_id_er, test.message);
 		result.number_of_them = 1;
 		result.all_fd[0] = client_fd;
 	}
 	else
 	{
-
+		if (room_concern(test))
+			room_concern_act(&result, &test, client_fd, g_world);
 	}
 	return (result);
 }

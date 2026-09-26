@@ -1,4 +1,4 @@
-#include "world.h"
+#include "server.h"
 
 void	initialize_groups(t_all_groups *groups)
 {
@@ -442,7 +442,7 @@ void	initialize_rooms(t_all_rooms *rooms)
 	rooms->len = 9;
 }
 
-void	initialize_world(t_world *world)
+void	initialize_world(t_world *world, t_client_manager *g_manager)
 {
 	t_all_groups	groups;
 	t_all_dialogues	dialogues;
@@ -466,4 +466,5 @@ void	initialize_world(t_world *world)
 	world->npcs = npcs;
 	world->items = items;
 	world->rooms = rooms;
+	world->client_manager = g_manager;
 }

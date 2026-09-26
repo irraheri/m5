@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 15:09:51 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/24 07:03:44 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/26 08:42:34 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,16 +127,3 @@ typedef struct all_rooms
 	t_room			rooms[MAX_LEN];
 	int				len;
 }					t_all_rooms;
-
-typedef struct world
-{
-	t_all_rooms		rooms;
-	t_all_items		items;
-	t_all_npcs		npcs;
-	t_all_quests	quests;
-	t_all_missions	missions;
-	t_all_dialogues	dialogues;
-	t_all_groups	groups;
-}					t_world;
-
-void				initialize_world(t_world *world);

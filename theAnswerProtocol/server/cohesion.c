@@ -61,6 +61,7 @@ t_signal	cohesion(int client_fd, char *buf, t_world *g_world,
 	t_signal	sign;
 	t_command	test;
 
+	sign.additional_group.number_of_them = 0;
 	test = first_process(buf);
 	if (test.is_valid == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:16 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/24 07:30:06 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/26 09:08:10 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_property			g_server;
 t_client_manager	g_manager;
 t_world				g_world;
 
-
 void	handle_shutdown(int sig)
 {
 	log_date();
@@ -25,16 +24,29 @@ void	handle_shutdown(int sig)
 	exit(0);
 }
 
-void	server_act(t_signal rec)
+void	server_act(t_signal rec, int client_id)
 {
 	int	i;
 
 	i = 0;
 	while (i < rec.number_of_them)
 	{
-		send(rec.all_fd[i], rec.message, strlen(rec.message), 0);
+		if (rec.all_fd[i] == client_id)
+			send(client_id, rec.specific_to_id_er, strlen(rec.specific_to_id_er), 0);
+		else
+			send(rec.all_fd[i], rec.message, strlen(rec.message), 0);
 		i++;
 	}
+	i = 0;
+	while (i < rec.additional_group.number_of_them)
+	{
+		send(rec.additional_group.all_fd[i], rec.additional_group.message,
+			strlen(rec.additional_group.message), 0);
+		i++;
+	}
+	rec.number_of_them = 0;
+	rec.additional_group.number_of_them = 0;
+	strcpy(rec.message, "\0");
 }
 
 void	*client_host(void *arg)
@@ -60,7 +72,7 @@ void	*client_host(void *arg)
 		printf("RECEIVED '%s' FROM PLAYER %d\n", buf, player_id(client_id,
 				g_manager));
 		rec = cohesion(client_id, buf, &g_world, &g_manager);
-		server_act(rec);
+		server_act(rec, client_id);
 	}
 	close(client_id);
 	return (NULL);
@@ -103,7 +115,7 @@ int	main(void)
 	bind(g_server.server_fd, (struct sockaddr *)&(g_server.address),
 		sizeof(g_server.address));
 	listen(g_server.server_fd, 128);
-	initialize_world(&g_world);
+	initialize_world(&g_world, &g_manager);
 	initialize_client_manager(&g_manager);
 	log_date();
 	printf("Server is initialized\n");
