@@ -1,8 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   room_concern.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/28 06:22:51 by irraheri          #+#    #+#             */
+/*   Updated: 2026/09/28 09:03:00 by irraheri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "third_process.h"
 
 int	room_concern(t_command test)
 {
 	if (!strcmp(test.type, "MOVE"))
+		return (1);
+	else if (!strcmp(test.type, "TAKE") || !strcmp(test.type, "DROP"))
 		return (1);
 	else
 		return (0);
@@ -27,7 +41,8 @@ t_room	*room_result_config(t_signal *result, int client_fd, t_world *g_world)
 			result->number_of_them = g_world->rooms.rooms[i].players.len;
 			room = &(g_world->rooms.rooms[i]);
 			while (++k < g_world->rooms.rooms[i].players.len)
-				result->all_fd[k] = atoi(g_world->rooms.rooms[i].players.ids[k]);
+				result->all_fd[k] = atoi(
+						g_world->rooms.rooms[i].players.ids[k]);
 		}
 	}
 	return (room);
@@ -37,29 +52,26 @@ int	move_from_to(t_signal *result, int client_fd, t_room *to, t_world *g_world)
 {
 	char	sample_buf[4];
 	int		i;
-	char    player_name[32];
+	char	player_name[32];
 
 	sprintf(sample_buf, "%d", client_fd);
 	strcpy(to->players.ids[to->players.len], sample_buf);
 	to->players.len += 1;
 	i = 0;
-    result->additional_group.number_of_them = to->players.len;
+	result->additional_group.number_of_them = to->players.len;
 	while (i < to->players.len)
 	{
 		result->additional_group.all_fd[i] = atoi(to->players.ids[i]);
 		i++;
 	}
-    i = 0;
+	i = 0;
 	while (i < MAX_PLAYER)
 	{
 		if (g_world->client_manager->players[i].fd == client_fd)
 			strcpy(player_name, g_world->client_manager->players[i].name);
-		i ++;
+		i++;
 	}
-    strcpy(result->message, "EVT ROOM PRESENCE LEAVE ");
-    strcat(result->message, player_name);
-	strcpy(result->additional_group.message, "EVT ROOM PRESENCE ENTER ");
-    strcat(result->additional_group.message, player_name);
+	fill_result(result, player_name);
 	return (1);
 }
 
@@ -80,7 +92,7 @@ int	move_part(t_signal *result, int client_fd, t_world *g_world, t_room **room)
 			{
 				if (!strcmp(g_world->rooms.rooms[j].id, (*room)->exits.ids[i]))
 				{
-					remove_player_in_world(client_fd, g_world);
+					_player_in_world(client_fd, g_world);
 					(*room) = &(g_world->rooms.rooms[j]);
 					return (move_from_to(result, client_fd, *room, g_world));
 				}
@@ -92,20 +104,20 @@ int	move_part(t_signal *result, int client_fd, t_world *g_world, t_room **room)
 	return (0);
 }
 
-void	room_concern_act(t_signal *result, t_command *test, int client_fd,
+void	room_concern_act(t_signal *result, t_command test, int client_fd,
 		t_world *g_world)
 {
 	t_room	*room;
 
-	if (!strcmp(test->type, "MOVE"))
+	if (!strcmp(test.type, "MOVE"))
 	{
 		room = room_result_config(result, client_fd, g_world);
-        strcpy(result->message, test->message);
+		strcpy(result->message, test.message);
 		if (move_part(result, client_fd, g_world, &room))
 		{
 			strcat(result->message, "\n");
 			strcat(result->additional_group.message, "\n");
-			strcpy(result->specific_to_id_er, "OK room=");
+			strcat(result->specific_to_id_er, "OK room=");
 			strcat(result->specific_to_id_er, room->id);
 			strcat(result->specific_to_id_er, "\n");
 		}
@@ -116,4 +128,6 @@ void	room_concern_act(t_signal *result, t_command *test, int client_fd,
 			strcpy(result->specific_to_id_er, "ERR 301 NO_EXIT\n");
 		}
 	}
+	else
+		take_drop_managing(result, test, client_fd, g_world);
 }

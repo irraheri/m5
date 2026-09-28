@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:20 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/26 08:45:42 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/28 08:55:45 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,16 @@ void					initialize_client_manager(t_client_manager *manager);
 void					add_player(int client_fd, t_client_manager *manager,
 							t_world *world);
 int						player_id(int client_fd, t_client_manager gmanager);
-void					remove_player(int client_fd, t_client_manager *manager);
-void					remove_player_in_world(int client_fd, t_world *world);
+void					_player(int client_fd, t_client_manager *manager);
+void					_player_in_world(int client_fd, t_world *world);
+int						in(char *element, t_list_of list);
+void					remove_from_list(char *element, t_list_of *list);
+void					copy_all_player_in_room(t_signal *result, t_room *room);
+void					append(char *element, t_list_of *list);
 t_signal				cohesion(int client_fd, char *buf, t_world *g_world,
 							t_client_manager *g_manager);
 int						room_concern(t_command test);
-void					room_concern_act(t_signal *result, t_command *test,
+void					room_concern_act(t_signal *result, t_command test,
 							int client_fd, t_world *g_world);
-void					initialize_world(t_world *world, t_client_manager *g_manager);
+void					initialize_world(t_world *world,
+							t_client_manager *g_manager);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   third_process_stating.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/28 06:41:01 by irraheri          #+#    #+#             */
+/*   Updated: 2026/09/28 06:41:02 by irraheri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "server.h"
 
 void	who_state_proc(t_command *test, t_client_manager *g_manager)
@@ -39,10 +51,11 @@ void	inventory_state_proc(t_command *test, t_client_manager *g_manager,
 	strcat(test->message, "]\n");
 }
 
-void status_state_proc(t_command *test, t_client_manager *g_manager, int client_id)
+void	status_state_proc(t_command *test, t_client_manager *g_manager,
+		int client_id)
 {
-	int	client_;
-	char rand_buf[5];
+	int		client_;
+	char	rand_buf[5];
 
 	strcpy(test->message, "OK {");
 	client_ = 0;
@@ -66,10 +79,10 @@ void status_state_proc(t_command *test, t_client_manager *g_manager, int client_
 	strcat(test->message, "}\n");
 }
 
-static void quests_property(t_command *test, t_quest quest, int *k)
+static void	quests_property(t_command *test, t_quest quest, int *k)
 {
-	int i;
-	char buf_rand[4];
+	int		i;
+	char	buf_rand[4];
 
 	i = 0;
 	if (k != 0)
@@ -91,31 +104,32 @@ static void quests_property(t_command *test, t_quest quest, int *k)
 	*k = *k + 1;
 }
 
-void quests_state_proc(t_command *test, t_client_manager *g_manager, t_world *world, int client_id)
+void	quests_state_proc(t_command *test, t_client_manager *g_manager,
+		t_world *world, int client_id)
 {
-	int client_;
-	int i;
-	int quest_id;
-	int k;
+	int	client_;
+	int	i;
+	int	quest_id;
+	int	k;
 
-	client_ = 0;
+	client_ = -1;
 	k = 0;
 	strcpy(test->message, "OK [");
-	while (client_ < g_manager->number_of_player && client_id != g_manager->players[client_].fd)
-		client_++;
+	while (++client_ < g_manager->number_of_player
+		&& client_id != g_manager->players[client_].fd);
 	if (client_ < g_manager->number_of_player)
 	{
-		i = 0;
-		while (i < g_manager->players[client_].quests.len)
+		i = -1;
+		while (++i < g_manager->players[client_].quests.len)
 		{
-			quest_id = 0;
-			while (quest_id < world->quests.len)
+			quest_id = -1;
+			while (++quest_id < world->quests.len)
 			{
-				if (!strcmp(world->quests.quests[quest_id].id, g_manager->players[client_].quests.ids[i]))
-					quests_property(test, world->quests.quests[quest_id], &k);
-				quest_id++;
+				if (!strcmp(world->quests.quests[quest_id].id,
+						g_manager->players[client_].quests.ids[i]))
+					quests_property(test, world->quests.quests[quest_id],
+						&k);
 			}
-			i++;
 		}
 	}
 }

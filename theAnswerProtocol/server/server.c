@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:16 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/26 09:08:10 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/28 08:03:07 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	*client_host(void *arg)
 		{
 			log_date();
 			printf("Player %d DISCONNECTED\n", player_id(client_id, g_manager));
-			remove_player(client_id, &g_manager);
-			remove_player_in_world(client_id, &g_world);
+			_player(client_id, &g_manager);
+			_player_in_world(client_id, &g_world);
 			break ;
 		}
 		log_date();
@@ -115,8 +115,8 @@ int	main(void)
 	bind(g_server.server_fd, (struct sockaddr *)&(g_server.address),
 		sizeof(g_server.address));
 	listen(g_server.server_fd, 128);
-	initialize_world(&g_world, &g_manager);
 	initialize_client_manager(&g_manager);
+	initialize_world(&g_world, &g_manager);
 	log_date();
 	printf("Server is initialized\n");
 	while (1)

@@ -28,7 +28,7 @@ void	add_player(int client_fd, t_client_manager *manager, t_world *world)
 	exit(0);
 }
 
-void	remove_player(int client_fd, t_client_manager *manager)
+void	_player(int client_fd, t_client_manager *manager)
 {
 	int	i;
 
@@ -70,7 +70,7 @@ int	player_id(int client_fd, t_client_manager gmanager)
 	return (0);
 }
 
-void	remove_player_in_world(int client_fd, t_world *world)
+void	_player_in_world(int client_fd, t_world *world)
 {
 	int	i;
 	int	j;

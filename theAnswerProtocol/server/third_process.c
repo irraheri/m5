@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   third_process.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/28 06:41:54 by irraheri          #+#    #+#             */
+/*   Updated: 2026/09/28 09:09:37 by irraheri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "third_process.h"
 
 void	look_c(t_command *test, t_room room, t_client_manager *g_manager)
@@ -42,7 +54,7 @@ void	look_state_proc(t_command *test, int client_fd, t_world *g_world,
 			j++;
 		}
 		i++;
-	} 
+	}
 }
 
 void	print_ing_state_mess(t_command *test, int client_fd, t_world *g_world,
@@ -63,6 +75,8 @@ void	print_ing_state_mess(t_command *test, int client_fd, t_world *g_world,
 	}
 	else if (!strcmp(test->type, "CONNECT"))
 		connect_state_proc(test, g_manager, client_fd);
+	else
+		talk_state_proc(test, client_fd, g_world);
 }
 
 int	is_state(t_command test)
@@ -78,6 +92,8 @@ int	is_state(t_command test)
 	else if (!strcmp(test.type, "STATUS"))
 		return (1);
 	else if (!strcmp(test.type, "QUESTS"))
+		return (1);
+	else if (!strcmp(test.type, "TALK"))
 		return (1);
 	else
 		return (0);
@@ -99,7 +115,7 @@ t_signal	third_process(t_command test, int client_fd, t_world *g_world,
 	else
 	{
 		if (room_concern(test))
-			room_concern_act(&result, &test, client_fd, g_world);
+			room_concern_act(&result, test, client_fd, g_world);
 	}
 	return (result);
 }

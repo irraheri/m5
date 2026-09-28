@@ -95,7 +95,7 @@ void	initialize_quests(t_all_quests *quests)
 	strcpy(quests->quests[1].id, "doogy_saitama");
 	strcpy(quests->quests[1].name, "The Clearing");
 	strcpy(quests->quests[1].description,
-		"Remove the wanderer and the bored one to restore peace to the crossroads.");
+		" the wanderer and the bored one to restore peace to the crossroads.");
 	quests->quests[1].missions = missions[1];
 	quests->quests[1].done_missions = 0;
 	strcpy(quests->quests[1].reward_id, "philosophical_stone");
