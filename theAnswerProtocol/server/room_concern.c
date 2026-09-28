@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 06:22:51 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/28 09:03:00 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/28 11:22:54 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	room_concern(t_command test)
 	if (!strcmp(test.type, "MOVE"))
 		return (1);
 	else if (!strcmp(test.type, "TAKE") || !strcmp(test.type, "DROP"))
+		return (1);
+	else if (!strcmp(test.type, "ATTACK"))
 		return (1);
 	else
 		return (0);
