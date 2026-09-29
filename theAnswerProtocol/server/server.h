@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:20 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/28 08:55:45 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/29 07:07:59 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,3 +94,6 @@ void					room_concern_act(t_signal *result, t_command test,
 							int client_fd, t_world *g_world);
 void					initialize_world(t_world *world,
 							t_client_manager *g_manager);
+void					attack(t_signal *result, t_command test, int client_fd,
+							t_world *g_world);
+int						generate_weighted_attack(void);

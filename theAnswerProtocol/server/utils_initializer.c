@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 12:41:18 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/22 10:22:41 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/29 07:07:48 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,24 @@ void	log_date(void)
 	printf("\r[%s] - ", date);
 }
 
+int	generate_weighted_attack(void)
+{
+	int		r;
+	int		attack;
+	r = rand() % 100;
+	if (r < 30)
+		attack = 1 + (rand() % 5);
+	else if (r < 55)
+		attack = 6 + (rand() % 5);
+	else if (r < 75)
+		attack = 11 + (rand() % 4);
+	else if (r < 90)
+		attack = 15 + (rand() % 3);
+	else
+		attack = 18 + (rand() % 3);
+	return (attack);
+}
+
 void	initialize_client_manager(t_client_manager *manager)
 {
 	int				i;
@@ -57,9 +75,9 @@ void	initialize_client_manager(t_client_manager *manager)
 		strcpy(manager->players[i].name, "UNAUTHENTICATED");
 		manager->players[i].items.len = 0;
 		manager->players[i].quests.len = 0;
-		manager->players[i].hp = 100;
-		manager->players[i].max_hp = 100;
-		manager->players[i].attack = 10;
+		manager->players[i].hp = 1000;
+		manager->players[i].max_hp = 1000;
+		manager->players[i].attack = generate_weighted_attack();
 		strcpy(manager->players[i].status_hp, "healthy");
 		i++;
 	}

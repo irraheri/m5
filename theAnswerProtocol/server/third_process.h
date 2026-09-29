@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 06:36:33 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/28 11:24:16 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/28 13:19:00 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,3 @@ void	connect_state_proc(t_command *test, t_client_manager *g_manager,
 void	take_drop_managing(t_signal *result, t_command test, int client_fd,
 			t_world *g_world);
 void	talk_state_proc(t_command *test, int client_fd, t_world *g_world);
-void	attack(t_signal *result, t_command test, int client_fd,
-			t_world *g_world);

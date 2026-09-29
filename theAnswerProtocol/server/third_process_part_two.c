@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 06:36:17 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/28 11:23:50 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/28 13:24:59 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,11 @@ void	take_drop_managing(t_signal *result, t_command test, int client_fd,
 	int	j;
 	int	player_;
 
-	if (!strcmp(test.message, "ATTACK"))
-		return (attack(result, test, client_fd, g_world));
+	if (!strcmp(test.type, "ATTACK"))
+	{
+		attack(result, test, client_fd, g_world);
+		return ;
+	}
 	i = -1;
 	player_ = find_player_index(client_fd, g_world);
 	while (++i < g_world->rooms.len)

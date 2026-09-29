@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 06:53:12 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/22 10:47:07 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/29 06:56:24 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*wait_for_server(void *arg)
 		else if (g_disconnect == 1)
 			break;
 		pthread_mutex_lock(&g_mutex);
-		printf("Serveur: %s", buffer);
+		printf("%s", buffer);
 		pthread_mutex_unlock(&g_mutex);
 	}
 	return (NULL);
@@ -53,7 +53,7 @@ void	*wait_for_client(void *arg)
 			break ;
 		else if (!strcmp(buffer, "QUIT\n"))
 		{
-			printf("Serveur: OK bye\n");
+			printf("OK bye\n");
 			g_disconnect = 1;
 		}
 		send(sock, buffer, strlen(buffer), 0);
