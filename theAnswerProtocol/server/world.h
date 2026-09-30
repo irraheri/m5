@@ -6,7 +6,7 @@
 /*   By: irraheri <irraheri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 15:09:51 by irraheri          #+#    #+#             */
-/*   Updated: 2026/09/26 08:42:34 by irraheri         ###   ########.fr       */
+/*   Updated: 2026/09/29 10:45:27 by irraheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_list_of
 {
-	char			ids[MAX_LEN][32];
+	char			ids[MAX_LEN][16];
 	int				len;
 }					t_list_of;
 
