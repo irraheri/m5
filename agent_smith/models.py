@@ -13,3 +13,4 @@ class Groq_Model(Model):
 
 class Models(Enum):
     GROQ = Groq_Model
+

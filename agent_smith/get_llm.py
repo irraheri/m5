@@ -58,3 +58,4 @@ class LLM:
                 print(answer.json())
         self.retries = retries
         self.request_time_ms = (time.time() - start) * 1000
+
